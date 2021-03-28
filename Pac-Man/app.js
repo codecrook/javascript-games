@@ -1,12 +1,13 @@
 {
-    const [width, grid, scoreDisplay] = [
+    const [width, grid, scoreDisplay, squares] = [
         28,
         document.querySelector('.grid'),
-        document.querySelector('#score')
+        document.querySelector('#score'),
+        []
     ];
 
     //28 * 28 = 784
-    // 0 - pac-dots
+    // 0 - pac-dot
     // 1 - wall
     // 2 - ghost-lair
     // 3 - power-pellet
@@ -42,4 +43,27 @@
         1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
     ];
+
+    const types = ['pac-dot', 'wall', 'ghost-lair', 'power-pellet', 'empty'];
+
+    // function to create the game board
+    function createBoard() {
+        const fragment = document.createDocumentFragment();
+        layout.forEach(blockCode => {
+            // create a square
+            const square = document.createElement('div');
+            square.className = types[blockCode];
+
+            // put square in fragment
+            fragment.appendChild(square);
+
+            // put square in squares array
+            squares.push(square);
+        });
+
+        // put fragment in grid
+        grid.appendChild(fragment);
+    }
+
+    createBoard();
 }
