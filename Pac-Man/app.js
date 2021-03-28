@@ -66,4 +66,12 @@
     }
 
     createBoard();
+
+    let pacmanCurrentIndex = 490;
+    squares[pacmanCurrentIndex].className = 'pacman';
+
+    function control(e) {
+        console.log(`${e.key} pressed!`);
+    }
+    document.addEventListener('keyup', control);
 }

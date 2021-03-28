@@ -33,6 +33,7 @@ html, body {
 }
 
 .pacman {
-    background-color: yellow;
+    background-color: gold;
     border-radius: 7.5px;
+    border: none;
 }
