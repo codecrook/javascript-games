@@ -52,7 +52,7 @@
         layout.forEach(blockCode => {
             // create a square
             const square = document.createElement('div');
-            square.className = types[blockCode];
+            square.classList.add(types[blockCode]);
 
             // put square in fragment
             fragment.appendChild(square);
@@ -71,7 +71,25 @@
     squares[pacmanCurrentIndex].className = 'pacman';
 
     function control(e) {
-        console.log(`${e.key} pressed!`);
+        squares[pacmanCurrentIndex].classList.remove('pacman');
+
+        switch (e.key) {
+            case 'ArrowUp':
+                console.log('up!');
+                break;
+            case 'ArrowDown':
+                console.log('down!');
+                break;
+            case 'ArrowLeft':
+                console.log('left!');
+                (pacmanCurrentIndex % width !== 0) && (pacmanCurrentIndex -= 1);
+                break;
+            case 'ArrowRight':
+                console.log('right!');
+                break;
+        }
+
+        squares[pacmanCurrentIndex].classList.add('pacman');
     }
     document.addEventListener('keyup', control);
 }
