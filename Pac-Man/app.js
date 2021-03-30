@@ -94,6 +94,8 @@
                     !squares[pacmanCurrentIndex - 1].classList.contains('wall') &&
                     pacmanCurrentIndex % width !== 0
                 ) && (pacmanCurrentIndex -= 1);
+
+                (pacmanCurrentIndex === 364) && (pacmanCurrentIndex = 391);
                 break;
             case 'ArrowRight':
                 (
@@ -101,6 +103,8 @@
                     !squares[pacmanCurrentIndex + 1].classList.contains('wall') &&
                     pacmanCurrentIndex % width < width - 1
                 ) && (pacmanCurrentIndex += 1);
+
+                (pacmanCurrentIndex === 391) && (pacmanCurrentIndex = 364);
                 break;
         }
 
