@@ -126,6 +126,7 @@
         }
 
         pacDotEaten();
+        powerPelletEaten();
         squares[pacmanCurrentIndex].classList.add('pacman');
     }
 
@@ -135,6 +136,26 @@
             ++score;
             scoreDisplay.innerHTML = score;
         }
+    }
+
+    function powerPelletEaten() {
+        //if square pacman is in contains a power pellet
+        if (squares[pacmanCurrentIndex].classList.contains('power-pellet')) {
+            //remove power-pellet class from that place
+            squares[pacmanCurrentIndex].classList.remove('power-pellet');
+            //add a score of 10
+            score += 10;
+            //display the score
+            scoreDisplay.innerHTML = score;
+            //change each of the four ghosts to isScared
+            ghosts.forEach(ghost => ghost.isScared = true);
+            //use setTimeout to unscare ghosts after 10 seconds     
+            setTimeout(unScareGhosts, 10000);
+        }
+    }
+
+    function unScareGhosts() {
+        ghosts.forEach(ghost => ghost.isScared = false);
     }
 
     function moveGhost(ghost) {
