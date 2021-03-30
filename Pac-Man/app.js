@@ -137,6 +137,29 @@
         }
     }
 
-    ghosts.forEach(ghost => squares[ghost.startIndex].classList.add(ghost.className));
+    function moveGhost(ghost) {
+        const directions = [-1, +1, -width, +width];
+        let direction = directions[Math.floor(Math.random() * directions.length)];
+
+        ghost.timerId = setInterval(function () {
+            //if the next square does NOT contain a wall and a ghost
+            if (
+                !squares[ghost.currentIndex + direction].classList.contains('wall') &&
+                !squares[ghost.currentIndex + direction].classList.contains('ghost')
+            ) {
+                //remove any ghost
+                squares[ghost.currentIndex].classList.remove(ghost.className, 'ghost');
+                //add direction to current Index
+                ghost.currentIndex += direction;
+                //add ghost class
+                squares[ghost.currentIndex].classList.add(ghost.className, 'ghost');
+            } else {
+                direction = directions[Math.floor(Math.random() * directions.length)];
+            }
+        }, ghost.speed)
+    }
+
+    ghosts.forEach(ghost => squares[ghost.currentIndex].classList.add(ghost.className, 'ghost'));
+    ghosts.forEach(ghost => moveGhost(ghost));
     document.addEventListener('keyup', control);
 }
