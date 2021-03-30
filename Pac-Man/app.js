@@ -5,6 +5,7 @@
         document.querySelector('#score'),
         []
     ];
+    let score = 0;
 
     //28 * 28 = 784
     // 0 - pac-dot
@@ -108,7 +109,16 @@
                 break;
         }
 
+        pacDotEaten();
         squares[pacmanCurrentIndex].classList.add('pacman');
+    }
+
+    function pacDotEaten() {
+        if (squares[pacmanCurrentIndex].classList.contains('pac-dot')) {
+            squares[pacmanCurrentIndex].classList.remove('pac-dot');
+            ++score;
+            scoreDisplay.innerHTML = score;
+        }
     }
     document.addEventListener('keyup', control);
 }
