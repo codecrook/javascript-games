@@ -76,24 +76,28 @@
         switch (e.key) {
             case 'ArrowUp':
                 (
+                    !squares[pacmanCurrentIndex - width].classList.contains('ghost-lair') &&
                     !squares[pacmanCurrentIndex - width].classList.contains('wall') &&
                     pacmanCurrentIndex - width >= 0
                 ) && (pacmanCurrentIndex -= width);
                 break;
             case 'ArrowDown':
                 (
+                    !squares[pacmanCurrentIndex + width].classList.contains('ghost-lair') &&
                     !squares[pacmanCurrentIndex + width].classList.contains('wall') &&
                     pacmanCurrentIndex + width < width * width
                 ) && (pacmanCurrentIndex += width);
                 break;
             case 'ArrowLeft':
                 (
+                    !squares[pacmanCurrentIndex - 1].classList.contains('ghost-lair') &&
                     !squares[pacmanCurrentIndex - 1].classList.contains('wall') &&
                     pacmanCurrentIndex % width !== 0
                 ) && (pacmanCurrentIndex -= 1);
                 break;
             case 'ArrowRight':
                 (
+                    !squares[pacmanCurrentIndex + 1].classList.contains('ghost-lair') &&
                     !squares[pacmanCurrentIndex + 1].classList.contains('wall') &&
                     pacmanCurrentIndex % width < width - 1
                 ) && (pacmanCurrentIndex += 1);
