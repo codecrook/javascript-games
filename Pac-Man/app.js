@@ -75,20 +75,28 @@
 
         switch (e.key) {
             case 'ArrowUp':
-                console.log('up!');
-                (pacmanCurrentIndex - width >= 0) && (pacmanCurrentIndex -= width);
+                (
+                    !squares[pacmanCurrentIndex - width].classList.contains('wall') &&
+                    pacmanCurrentIndex - width >= 0
+                ) && (pacmanCurrentIndex -= width);
                 break;
             case 'ArrowDown':
-                console.log('down!');
-                (pacmanCurrentIndex + width < width * width) && (pacmanCurrentIndex += width);
+                (
+                    !squares[pacmanCurrentIndex + width].classList.contains('wall') &&
+                    pacmanCurrentIndex + width < width * width
+                ) && (pacmanCurrentIndex += width);
                 break;
             case 'ArrowLeft':
-                console.log('left!');
-                (pacmanCurrentIndex % width !== 0) && (pacmanCurrentIndex -= 1);
+                (
+                    !squares[pacmanCurrentIndex - 1].classList.contains('wall') &&
+                    pacmanCurrentIndex % width !== 0
+                ) && (pacmanCurrentIndex -= 1);
                 break;
             case 'ArrowRight':
-                console.log('right!');
-                (pacmanCurrentIndex % width < width - 1) && (pacmanCurrentIndex += 1);
+                (
+                    !squares[pacmanCurrentIndex + 1].classList.contains('wall') &&
+                    pacmanCurrentIndex % width < width - 1
+                ) && (pacmanCurrentIndex += 1);
                 break;
         }
 
