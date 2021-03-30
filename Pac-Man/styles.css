@@ -37,3 +37,21 @@ html, body {
     border-radius: 7.5px;
     border: none;
 }
+.blinky, .pinky, .inky, .clyde {
+    border: none;
+}
+.blinky {
+    background-color: red;
+}
+
+.pinky {
+    background-color: pink;
+}
+
+.inky {
+    background-color: aqua;
+}
+
+.clyde {
+    background-color: orange;
+}
