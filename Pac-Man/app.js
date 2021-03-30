@@ -76,9 +76,11 @@
         switch (e.key) {
             case 'ArrowUp':
                 console.log('up!');
+                (pacmanCurrentIndex - width >= 0) && (pacmanCurrentIndex -= width);
                 break;
             case 'ArrowDown':
                 console.log('down!');
+                (pacmanCurrentIndex + width < width * width) && (pacmanCurrentIndex += width);
                 break;
             case 'ArrowLeft':
                 console.log('left!');
@@ -86,6 +88,7 @@
                 break;
             case 'ArrowRight':
                 console.log('right!');
+                (pacmanCurrentIndex % width < width - 1) && (pacmanCurrentIndex += 1);
                 break;
         }
 
