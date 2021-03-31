@@ -127,6 +127,8 @@
 
         pacDotEaten();
         powerPelletEaten();
+        checkForWin();
+        checkForGameOver();
         squares[pacmanCurrentIndex].classList.add('pacman');
     }
 
@@ -191,6 +193,8 @@
                 ghost.currentIndex = ghost.startIndex;
                 //add a score of 100
                 score += 100;
+                //display new score
+                scoreDisplay.innerHTML = score;
                 //re-add classnames of ghost.className and 'ghost' to the ghosts new postion  
                 squares[ghost.currentIndex].classList.add(ghost.className, 'ghost');
             }
@@ -211,6 +215,18 @@
             document.removeEventListener('keyup', control);
             //tell user the game is over   
             scoreDisplay.innerHTML = 'GAME OVER!!';
+        }
+    }
+
+    //check for win
+    function checkForWin() {
+        if (score === 274) {
+            //stop each ghost
+            ghosts.forEach(ghost => clearInterval(ghost.timerId));
+            //remove the eventListener for the control function
+            document.removeEventListener('keyup', control);
+            //tell our user we have won
+            scoreDisplay.innerHTML = 'Woohoo! You Won!';
         }
     }
 
