@@ -169,13 +169,18 @@
                 !squares[ghost.currentIndex + direction].classList.contains('ghost')
             ) {
                 //remove any ghost
-                squares[ghost.currentIndex].classList.remove(ghost.className, 'ghost');
+                squares[ghost.currentIndex].classList.remove(ghost.className, 'ghost', 'scared-ghost');
                 //add direction to current Index
                 ghost.currentIndex += direction;
                 //add ghost class
                 squares[ghost.currentIndex].classList.add(ghost.className, 'ghost');
             } else {
                 direction = directions[Math.floor(Math.random() * directions.length)];
+            }
+
+            //if the ghost is currently scared
+            if (ghost.isScared) {
+                squares[ghost.currentIndex].classList.add('scared-ghost')
             }
         }, ghost.speed)
     }

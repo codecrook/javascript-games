@@ -32,14 +32,15 @@ html, body {
     border-radius: 7.5px;
 }
 
+.pacman, .blinky, .pinky, .inky, .clyde, .scared-ghost {
+    border: none;
+}
+
 .pacman {
     background-color: gold;
     border-radius: 7.5px;
-    border: none;
 }
-.blinky, .pinky, .inky, .clyde {
-    border: none;
-}
+
 .blinky {
     background-color: red;
 }
@@ -54,4 +55,8 @@ html, body {
 
 .clyde {
     background-color: orange;
+}
+
+.scared-ghost {
+    background-color: lightskyblue;
 }
